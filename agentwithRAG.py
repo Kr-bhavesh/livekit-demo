@@ -10,6 +10,8 @@ from livekit.plugins import tavus, google
 # from langchain_google_genai import GoogleGenerativeAIEmbeddings
 from langchain_community.embeddings import JinaEmbeddings
 from langchain_qdrant import QdrantVectorStore
+from langchain_mistralai import MistralAIEmbeddings
+
 
 load_dotenv()
 
@@ -165,10 +167,11 @@ async def entrypoint(ctx: agents.JobContext):
     
     # Initialize embeddings and vector store
     # embeddings = GoogleGenerativeAIEmbeddings(model="models/gemini-embedding-001")
-    embeddings = JinaEmbeddings(model='jina-embeddings-v2-base-en')
+    # embeddings = JinaEmbeddings(model='jina-embeddings-v2-base-en')
+    embeddings = MistralAIEmbeddings(model="mistral-embed")
     vector_store = QdrantVectorStore.from_existing_collection(
         embedding=embeddings,
-        collection_name="router_manual",
+        collection_name="porus2",
         url=QDRANT_URL,
         api_key=QDRANT_API_KEY,
         prefer_grpc=True,
