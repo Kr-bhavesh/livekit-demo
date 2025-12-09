@@ -11,6 +11,7 @@ from livekit.plugins import tavus, google
 from langchain_community.embeddings import JinaEmbeddings
 from langchain_qdrant import QdrantVectorStore
 from langchain_mistralai import MistralAIEmbeddings
+from livekit.agents.voice import room_io
 
 
 load_dotenv()
@@ -205,7 +206,11 @@ async def entrypoint(ctx: agents.JobContext):
     await avatar.start(session, room=ctx.room)
     
     # Start the agent session
-    await session.start(agent=agent, room=ctx.room)
+    await session.start(
+    agent=agent,
+    room=ctx.room,
+    room_options=room_io.RoomOptions(video_input=True)
+   )
     
     # Send initial greeting
     await session.generate_reply(instructions=SESSION_INSTRUCTIONS)
