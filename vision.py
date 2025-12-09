@@ -65,14 +65,14 @@ Format:
 
 
 SESSION_INSTRUCTIONS = """
-Hi! 👋 I’m your Router Troubleshooting Assistant.
+Hi! 👋 I'm your Router Troubleshooting Assistant.
 
 You can:
 ✅ Describe the issue
 ✅ Show me the router via camera
 ✅ Ask about slow or broken WiFi
 
-I’ll analyze it and guide you step-by-step.
+I'll analyze it and guide you step-by-step.
 """
 
 
@@ -141,7 +141,7 @@ class PolicyAgent(Agent):
                     - Visible LED colors + status (blinking/solid)
                     - Cable status (connected / disconnected)
                     - Visible damage (yes/no)
-                    - Confidence level (0–100)
+                    - Confidence level (0-100)
 
                     DO NOT GUESS.
                     """,
